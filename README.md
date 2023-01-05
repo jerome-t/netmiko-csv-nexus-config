@@ -1,7 +1,9 @@
 # netmiko-csv-nexus-config
 This is a very simple python script to configure multiple Cisco Nexus switches from a CSV file.
 
-The script take the CVS file line by line; the first entry is the switch name, used to establish the SSH session. And the next entries are the configuration part, who can be changed.
+The script take the CVS file line by line; the first entry is the switch name, used to establish the SSH session.
+And the next entries are the configuration variables.
+Then, into the Python script, we use these variables with any commands you like.
 
 Before doing any change, the script will show you the planned changes and ask you for a confirmation.
 The script will also log all changes into log files, under /logs directory, including the date and time of the change.
@@ -25,8 +27,27 @@ Installation:
 
 
 ## Configuration
-Update the **lb-config.csv** file with the list of your network switches (first colonm), and the configuration changes (next colonms).
-Then, update the **lb-config.py** file, under **commands**  with the configuration commands you need, and the related variables from the CSV file.
+Update the **lb-config.csv** file with the list of your network switches as first colonm, and the configuration variables(s) on the next colonms.
+
+Then, update the **lb-config.py** file this way:
+ - You can change the device-type, currently set for Cisco NXOS on the line: "device_type": "cisco_nxos",
+Please refer to the Netmiko documentation here for more information: https://pynet.twb-tech.com/blog/automation/netmiko-scp.html
+
+ - Under the **commands** part, you can set the configuration commands you need, using the variables of the CSV file.
+   For example, the lines:
+	command1 = "ip address "+sw_lb0
+	command2 = "ip address "+sw_lb1
+	command3 = "ip address "+sw_lb1sec
+	config_commands = ["interface loopback0", command1, "interface loopback1", command2, command3]
+   
+   Will configure, for the switch **switch-c**:
+	interface loopback0
+	 ip address 172.17.138.153
+	interface loopback1
+	 ip address 172.17.138.213
+	 ip address 172.17.138.248 secondary
+
+ - by changing the CSV values and the commands in the python script, the possibilities are almost endless. 
 
 
 ## Usage
