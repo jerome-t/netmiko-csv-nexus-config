@@ -1,3 +1,5 @@
+[![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/jerome-t/netmiko-csv-nexus-config)
+
 # netmiko-csv-nexus-config
 This is a very simple python script to configure multiple Cisco Nexus switches from a CSV file.
 
