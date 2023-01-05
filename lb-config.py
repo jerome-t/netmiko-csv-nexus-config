@@ -80,14 +80,14 @@ with open("./lb-config.csv", 'r') as csvfile:
         print("Loopback1-Secondary: ", sw_lb1sec)
         print(40*"-")
 
-        # --- Set the config commands
+        # --- Set the config commands - This can be customized
         command1 = "ip address "+sw_lb0
         command2 = "ip address "+sw_lb1
         command3 = "ip address "+sw_lb1sec
         config_commands = ["interface loopback0", command1, "interface loopback1", command2, command3]
         
         # --- Show the switch and config commands:
-        print("for switch:", sw_name)
+        print("Configuration changes for switch:", sw_name)
         print(config_commands)
         print(40*"-")
 
