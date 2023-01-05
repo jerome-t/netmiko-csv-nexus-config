@@ -34,6 +34,7 @@ Then, update the **lb-config.py** file this way:
 Please refer to the Netmiko documentation here for more information: https://pynet.twb-tech.com/blog/automation/netmiko-scp.html
 
  - Under the **commands** part, you can set the configuration commands you need, using the variables of the CSV file.
+
    For example, the lines:
 
 	```python   
@@ -53,13 +54,73 @@ Please refer to the Netmiko documentation here for more information: https://pyn
 	 ip address 172.17.138.248 secondary
 	```
 
- - by changing the CSV values and the commands in the python script, the possibilities are almost endless. 
+ - By changing the CSV values and the commands in the python script, the possibilities are almost endless. 
 
 
 ## Usage
-When you execute the script, it will show you the configuration changes and ask you for a confirmation before doing the change.
-Then, it will do the changes, and log all changes into log files, under /logs directory, including the date, time and the details of the change.
-**Usage: lb-config.py**
+1) Install Python
+2) Clone this repository and install Netmiko and the required modules
+
+	```
+	$ git clone https://github.com/jerome-t/netmiko-scp-multi-thread-upload
+	$ sudo pip install -r requirements.txt
+	```
+3) Update the **lb-config.csv** file with the switch names on the first colomn, and the veriables on the next colomns
+4) Update the **lb-config.py** file with the configuration commands you need
+5) Run the script, it will ask you username and password to login to your device(s), and a confirmation for each switch:
+
+```
+$ ./lb-config.py
+Please insert your Nexus username: admin
+And your password
+Password:
+----------------------------------------
+From CSV file:
+Switch Name:  switch-c
+Loopback0:  172.17.153/32
+Loopback1:  172.17.138.213/32
+Loopback1-Secondary:  172.17.138.248/32 secondary
+----------------------------------------
+for switch: switch-c
+['interface loopback0', 'ip address 172.17.138.153/32', 'interface loopback1', 'ip address 172.17.138.213/32', 'ip address 172.17.138.248/32 secondary']
+----------------------------------------
+Please confirm configuration change for switch: switch-c [n]|y: y
+switch-c#
+ configure terminal
+Enter configuration commands, one per line. End with CNTL/Z.
+
+switch-c(config)#  interface loopback0
+
+switch-c(config-if)# ip address 172.17.138.153/32
+
+switch-c(config-if)# interface loopback1
+
+switch-c(config-if)# ip address 172.17.138.213/32
+
+switch-c(config-if)# ip address 172.17.138.248/32 secondary
+
+switch-c(config-if)#  end
+
+switch-c#
+
+Changes done, logged and config saved
+----------------------------------------
+----------------------------------------
+From CSV file:
+Switch Name:  switch-d
+Loopback0:  172.17.138.154/32
+Loopback1:  172.17.138.214/32
+Loopback1-Secondary:  172.17.138.248/32 secondary
+----------------------------------------
+for switch: n9300d
+['interface loopback0', 'ip address 172.17.138.154/32', 'interface loopback1', 'ip address 172.17.138.214/32', 'ip address 172.17.138.248/32 secondary']
+----------------------------------------
+Please confirm configuration change for switch: switch-d [n]|y:
+(... skipped ...)
+========================================
+All changes are done
+========================================
+```
 
 
 ## Getting help and Getting involved
