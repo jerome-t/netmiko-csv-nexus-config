@@ -35,12 +35,14 @@ Please refer to the Netmiko documentation here for more information: https://pyn
 
  - Under the **commands** part, you can set the configuration commands you need, using the variables of the CSV file.
    For example, the lines:
+   
 	command1 = "ip address "+sw_lb0
 	command2 = "ip address "+sw_lb1
 	command3 = "ip address "+sw_lb1sec
 	config_commands = ["interface loopback0", command1, "interface loopback1", command2, command3]
    
    Will configure, for the switch **switch-c**:
+   
 	interface loopback0
 	 ip address 172.17.138.153
 	interface loopback1
