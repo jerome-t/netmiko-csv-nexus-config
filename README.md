@@ -15,7 +15,6 @@ I needed to configure two loopbacks per leaf: The first loopback with a single I
 
 
 ## Installation
-
 Requirements: All you need is Python and pip.
 Then, pip will install Netmiko and dependencies.
 
@@ -26,28 +25,24 @@ Installation:
 
 
 ## Configuration
-
 Update the **lb-config.csv** file with the list of your network switches (first colonm), and the configuration changes (next colonms).
-
-Then update the **lb-config.py** file, under **commands**  with the configuration commands you need, and the related variables from the CSV file.
+Then, update the **lb-config.py** file, under **commands**  with the configuration commands you need, and the related variables from the CSV file.
 
 
 ## Usage
-
 When you execute the script, it will show you the configuration changes and ask you for a confirmation before doing the change.
-
 Then, it will do the changes, and log all changes into log files, under /logs directory, including the date, time and the details of the change.
-
 **Usage: lb-config.py**
 
 
 ## Getting help and Getting involved
-
 Please contact me on [Twitter](https://twitter.com/JeromeTissieres) or open an Issue/P.R.
 
 
 ## Author(s)
-
 This project was written and is maintained by the following individuals:
-
 * Jerome Tissieres <jerome@tissieres.ch>
+
+## Credits and references
+All credits to Kirk Byers for making [Netmiko](https://github.com/ktbyers/netmiko)
+
