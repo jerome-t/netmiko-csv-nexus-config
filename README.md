@@ -1,14 +1,14 @@
 # netmiko-csv-nexus-config
 This is a very simple python script to configure multiple Cisco Nexus switches from a CSV file.
 
-The script take the CVS file line by line; the first entry is the switch name, used to establish the SSH session.
+The script takes the CVS file line by line; the first entry is the switch name, used to establish the SSH session.
 And the next entries are the configuration variables.
-Then, into the Python script, we use these variables with any commands you like.
+Then, in the Python script, we use these variables with any commands you like.
 
-Before doing any change, the script will show you the planned changes and ask you for a confirmation.
-The script will also log all changes into log files, under /logs directory, including the date and time of the change.
+Before doing any changes, the script will show you the planned changes and ask you for confirmation.
+The script will also log all changes into log files, under the /logs directory, including the date and time of the change.
 
-This code can easily be customized and reused for another use-case, by modifying the configuration commands, that's why I share it.
+This code can easily be customized and reused for another use case, by modifying the configuration commands, that's why I share it.
 
 
 ## Use Case Description
@@ -27,10 +27,10 @@ Installation:
 ```
 
 ## Configuration
-Update the **lb-config.csv** file with the list of your network switches as first colonm, and the configuration variables(s) on the next colonms.
+Update the **lb-config.csv** file with the list of your network switches as first colunm, and the configuration variables(s) in the next colunms.
 
 Then, update the **lb-config.py** file this way:
- - You can change the device-type, currently set for Cisco NXOS on the line: "device_type": "cisco_nxos",
+ - You can change the device type, currently set for Cisco NXOS on the line: "device_type": "cisco_nxos",
 Please refer to the Netmiko documentation here for more information: https://pynet.twb-tech.com/blog/automation/netmiko-scp.html
 
  - Under the **commands** part, you can set the configuration commands you need, using the variables of the CSV file.
@@ -44,7 +44,7 @@ Please refer to the Netmiko documentation here for more information: https://pyn
 	config_commands = ["interface loopback0", command1, "interface loopback1", command2, command3]
   	```
  
-   Will configure, for the switch **switch-c**:
+   Will configure, for the switch **switch-c** this way:
 
 	``` 
 	interface loopback0
@@ -58,16 +58,16 @@ Please refer to the Netmiko documentation here for more information: https://pyn
 
 
 ## Usage
-1) Install Python
-2) Clone this repository and install Netmiko and the required modules
+1) Install Python.
+2) Clone this repository and install Netmiko and the required modules.
 
 	```
 	$ git clone https://github.com/jerome-t/netmiko-scp-multi-thread-upload
 	$ sudo pip install -r requirements.txt
 	```
-3) Update the **lb-config.csv** file with the switch names on the first colomn, and the veriables on the next colomns
-4) Update the **lb-config.py** file with the configuration commands you need
-5) Run the script, it will ask you username and password to login to your device(s), and a confirmation for each switch:
+3) Update the **lb-config.csv** file with the switch names on the first column, and the variables on the next columns.
+4) Update the **lb-config.py** file with the configuration commands you need.
+5) Run the script, it will ask you username and password to login into your device(s), and confirmation for each config changes:
 
 ```
 $ ./lb-config.py
@@ -123,7 +123,7 @@ All changes are done
 ```
 
 
-## Getting help and Getting involved
+## Getting help and Getting Involved
 Please contact me on [Twitter](https://twitter.com/JeromeTissieres) or open an Issue/P.R.
 
 
@@ -131,6 +131,6 @@ Please contact me on [Twitter](https://twitter.com/JeromeTissieres) or open an I
 This project was written and is maintained by the following individuals:
 * Jerome Tissieres <jerome@tissieres.ch>
 
-## Credits and references
-All credits to Kirk Byers for making [Netmiko](https://github.com/ktbyers/netmiko)
+## Credits and References
+All credit to Kirk Byers for making [Netmiko](https://github.com/ktbyers/netmiko)
 
