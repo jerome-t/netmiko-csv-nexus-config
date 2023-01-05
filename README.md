@@ -21,10 +21,10 @@ Requirements: All you need is Python and pip.
 Then, pip will install Netmiko and dependencies.
 
 Installation:
-
+```
 	$ git clone https://github.com/jerome-t/netmiko-csv-nexus-config
 	$ sudo pip install -r requirements.txt
-
+```
 
 ## Configuration
 Update the **lb-config.csv** file with the list of your network switches as first colonm, and the configuration variables(s) on the next colonms.
@@ -35,19 +35,23 @@ Please refer to the Netmiko documentation here for more information: https://pyn
 
  - Under the **commands** part, you can set the configuration commands you need, using the variables of the CSV file.
    For example, the lines:
-   
+
+	```python   
 	command1 = "ip address "+sw_lb0
 	command2 = "ip address "+sw_lb1
 	command3 = "ip address "+sw_lb1sec
 	config_commands = ["interface loopback0", command1, "interface loopback1", command2, command3]
-   
+  	```
+ 
    Will configure, for the switch **switch-c**:
-   
+
+	``` 
 	interface loopback0
 	 ip address 172.17.138.153
 	interface loopback1
 	 ip address 172.17.138.213
 	 ip address 172.17.138.248 secondary
+	```
 
  - by changing the CSV values and the commands in the python script, the possibilities are almost endless. 
 
