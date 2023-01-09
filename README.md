@@ -114,7 +114,7 @@ Loopback0:  172.17.138.154/32
 Loopback1:  172.17.138.214/32
 Loopback1-Secondary:  172.17.138.248/32 secondary
 ----------------------------------------
-for switch: n9300d
+for switch: switch-d
 ['interface loopback0', 'ip address 172.17.138.154/32', 'interface loopback1', 'ip address 172.17.138.214/32', 'ip address 172.17.138.248/32 secondary']
 ----------------------------------------
 Please confirm configuration change for switch: switch-d [n]|y:
